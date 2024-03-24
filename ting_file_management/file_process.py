@@ -1,3 +1,4 @@
+import sys
 from ting_file_management import file_management
 
 
@@ -33,4 +34,9 @@ def remove(instance):
 
 
 def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+    try:
+        response = instance.search(position)
+        return print(response)
+    except IndexError:
+        error = "Posição inválida"
+        return print(error, file=sys.stderr)
